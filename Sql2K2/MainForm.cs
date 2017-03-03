@@ -66,11 +66,7 @@ namespace Sql2K2
         {
             if (chColumns.CheckedItems.Count > 0 && tbOutput.Text.NotEmpty())
             {
-                var checkedCols = GetCheckedColumns();
-
-                var checkedColumns = checkedCols.Select(m => "[" + m.ToString() + "]").Aggregate((m1, m2) => m1 + "," + m2);
-
-                var data = SqlManager.ExecuteQuery(@"select " + checkedColumns + " from " + cmbTables.Text, tbConnectionString.Text);
+                var data = GetData();
 
                 if (data != null && data.Rows.Count > 0)
                 {
@@ -82,7 +78,7 @@ namespace Sql2K2
                     {
                         stringBuilder.Append(
                             string.Format(
-                                template.Replace(@"\n", "\n") + "\n", 
+                                template.Replace(@"\n", "\n") + "\n",
                                 args: (from DataColumn column in data.Columns select row[column]).ToArray()));
                     }
 
@@ -91,14 +87,38 @@ namespace Sql2K2
                     Process.Start(filename);
 
                 }
-
             }
+        }
 
+        private DataTable GetData()
+        {
+            if (tbCustomeQuery.Text.IsEmpty())
+            {
+
+                var checkedCols = GetCheckedColumns();
+
+                var checkedColumns =
+                    checkedCols.Select(m => "[" + m.ToString() + "]").Aggregate((m1, m2) => m1 + "," + m2);
+
+                var data = SqlManager.ExecuteQuery(@"select " + checkedColumns + " from " + cmbTables.Text,
+                    tbConnectionString.Text);
+                return data;
+            }
+            else
+            {
+                return SqlManager.ExecuteQuery(tbCustomeQuery.Text, tbConnectionString.Text);
+            }
         }
 
         private List<string> GetCheckedColumns()
         {
             return chColumns.Items.Cast<object>().Where((t, i) => chColumns.GetItemChecked(i)).Select(t => t.ToString()).ToList();
+        }
+
+        private void tbCustomeQuery_TextChanged(object sender, EventArgs e)
+        {
+            chColumns.Enabled = tbCustomeQuery.Text.IsEmpty();
+            cmbTables.Enabled = tbCustomeQuery.Text.IsEmpty();
         }
     }
 }

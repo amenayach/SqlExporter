@@ -38,6 +38,8 @@
             this.btnGenerateContent = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.tbOutput = new System.Windows.Forms.RichTextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbCustomeQuery = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnConnect
@@ -108,7 +110,7 @@
             this.chColumns.FormattingEnabled = true;
             this.chColumns.Location = new System.Drawing.Point(79, 91);
             this.chColumns.Name = "chColumns";
-            this.chColumns.Size = new System.Drawing.Size(485, 244);
+            this.chColumns.Size = new System.Drawing.Size(485, 199);
             this.chColumns.TabIndex = 13;
             // 
             // btnGenerateContent
@@ -125,7 +127,7 @@
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.Location = new System.Drawing.Point(20, 341);
+            this.label4.Location = new System.Drawing.Point(20, 360);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 39);
             this.label4.TabIndex = 15;
@@ -142,12 +144,31 @@
             this.tbOutput.TabIndex = 16;
             this.tbOutput.Text = "{0}";
             // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(18, 302);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(59, 39);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Or custom query";
+            // 
+            // tbCustomeQuery
+            // 
+            this.tbCustomeQuery.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbCustomeQuery.Location = new System.Drawing.Point(79, 307);
+            this.tbCustomeQuery.Name = "tbCustomeQuery";
+            this.tbCustomeQuery.Size = new System.Drawing.Size(485, 20);
+            this.tbCustomeQuery.TabIndex = 18;
+            this.tbCustomeQuery.TextChanged += new System.EventHandler(this.tbCustomeQuery_TextChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(576, 512);
-            this.Icon = Properties.Resources.database_export;
+            this.Controls.Add(this.tbCustomeQuery);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.tbOutput);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnGenerateContent);
@@ -158,6 +179,7 @@
             this.Controls.Add(this.tbConnectionString);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnConnect);
+            this.Icon = global::Sql2K2.Properties.Resources.database_export;
             this.Name = "MainForm";
             this.Text = "SQL2K2";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -178,6 +200,8 @@
         private System.Windows.Forms.Button btnGenerateContent;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RichTextBox tbOutput;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tbCustomeQuery;
     }
 }
 
