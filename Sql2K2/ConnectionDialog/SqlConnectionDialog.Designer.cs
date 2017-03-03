@@ -60,6 +60,7 @@
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(425, 20);
             this.tbPassword.TabIndex = 2;
+            this.tbPassword.UseSystemPasswordChar = true;
             // 
             // cmbDatabase
             // 
