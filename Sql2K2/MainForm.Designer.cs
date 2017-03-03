@@ -147,6 +147,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(576, 512);
+            this.Icon = Properties.Resources.database_export;
             this.Controls.Add(this.tbOutput);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnGenerateContent);
