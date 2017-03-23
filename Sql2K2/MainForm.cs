@@ -64,7 +64,7 @@ namespace Sql2K2
 
         private void btnGenerateContent_Click(object sender, EventArgs e)
         {
-            if (chColumns.CheckedItems.Count > 0 && tbOutput.Text.NotEmpty())
+            if ((chColumns.CheckedItems.Count > 0 && tbOutput.Text.NotEmpty()) || tbCustomeQuery.Text.NotEmpty())
             {
                 var data = GetData();
 
@@ -79,7 +79,7 @@ namespace Sql2K2
                         stringBuilder.Append(
                             string.Format(
                                 template.Replace(@"\n", "\n") + "\n",
-                                args: (from DataColumn column in data.Columns select row[column]).ToArray()));
+                                args: data.Columns.Cast<DataColumn>().Select(column => row[column].ToSql()).ToArray()));
                     }
 
                     var filename = Path.Combine(Application.StartupPath, "content" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".txt");
@@ -92,6 +92,7 @@ namespace Sql2K2
 
         private DataTable GetData()
         {
+
             if (tbCustomeQuery.Text.IsEmpty())
             {
 
@@ -102,12 +103,17 @@ namespace Sql2K2
 
                 var data = SqlManager.ExecuteQuery(@"select " + checkedColumns + " from " + cmbTables.Text,
                     tbConnectionString.Text);
+
                 return data;
+
             }
             else
             {
+
                 return SqlManager.ExecuteQuery(tbCustomeQuery.Text, tbConnectionString.Text);
+
             }
+
         }
 
         private List<string> GetCheckedColumns()

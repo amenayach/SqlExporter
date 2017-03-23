@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sql2K2.ObjectModel
 {
-    public class SqlManager
+    public static class SqlManager
     {
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Sql2K2.ObjectModel
                     r.Close();
 
                 }
-         
+
             }
             catch (Exception ex)
             {
@@ -122,29 +122,53 @@ namespace Sql2K2.ObjectModel
         public static DataTable ExecuteQuery(string s, string connectionString, params SqlParameter[] @params)
         {
             DataTable dt = null;
-            try
-            {
 
-                using (var con = new SqlConnection(connectionString))
-                using (var da = new SqlDataAdapter(s, con))
-                {
-                    dt = new DataTable();
-                    if (@params.Length > 0)
-                    {
-                        da.SelectCommand.Parameters.AddRange(@params);
-                    }
-                    if (da.SelectCommand.Connection.State != ConnectionState.Open)
-                        da.SelectCommand.Connection.Open();
-                    da.Fill(dt);
-                    da.SelectCommand.Connection.Close();
-                    da.Dispose();
-                }
-            }
-            catch (Exception ex)
+            using (var con = new SqlConnection(connectionString))
+            using (var da = new SqlDataAdapter(s, con))
             {
-                throw;
+                dt = new DataTable();
+                if (@params.Length > 0)
+                {
+                    da.SelectCommand.Parameters.AddRange(@params);
+                }
+                if (da.SelectCommand.Connection.State != ConnectionState.Open)
+                    da.SelectCommand.Connection.Open();
+                da.Fill(dt);
+                da.SelectCommand.Connection.Close();
+                da.Dispose();
             }
+
             return dt;
+
+        }
+
+        /// <summary>
+        /// Normalize SQL value to the equivalant string representation
+        /// </summary>
+        public static string ToSql(this object sqlValue)
+        {
+
+            if (sqlValue == null || DBNull.Value.Equals(sqlValue))
+            {
+                return "NULL";
+            }
+            else if (sqlValue is DateTime?)
+            {
+                return "N'" + ((DateTime)sqlValue).ToString("yyyy-MM-dd HH:mm:ss") + "'";
+            }
+            else if (sqlValue is DateTime)
+            {
+                return "N'" + ((DateTime)sqlValue).ToString("yyyy-MM-dd HH:mm:ss") + "'";
+            }
+            else if (sqlValue is bool)
+            {
+                return ((bool)sqlValue) ? "1" : "0";
+            }
+            else
+            {
+                return "N'" + sqlValue + "'";
+            }
+
         }
 
     }

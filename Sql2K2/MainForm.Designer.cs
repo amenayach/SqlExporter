@@ -39,13 +39,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tbOutput = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.tbCustomeQuery = new System.Windows.Forms.TextBox();
+            this.tbCustomeQuery = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // btnConnect
             // 
             this.btnConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConnect.Location = new System.Drawing.Point(489, 12);
+            this.btnConnect.Location = new System.Drawing.Point(754, 12);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(75, 23);
             this.btnConnect.TabIndex = 0;
@@ -68,7 +68,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbConnectionString.Location = new System.Drawing.Point(79, 14);
             this.tbConnectionString.Name = "tbConnectionString";
-            this.tbConnectionString.Size = new System.Drawing.Size(404, 20);
+            this.tbConnectionString.Size = new System.Drawing.Size(669, 20);
             this.tbConnectionString.TabIndex = 2;
             this.tbConnectionString.TextChanged += new System.EventHandler(this.tbConnectionString_TextChanged);
             // 
@@ -90,7 +90,7 @@
             this.cmbTables.FormattingEnabled = true;
             this.cmbTables.Location = new System.Drawing.Point(79, 51);
             this.cmbTables.Name = "cmbTables";
-            this.cmbTables.Size = new System.Drawing.Size(485, 21);
+            this.cmbTables.Size = new System.Drawing.Size(750, 21);
             this.cmbTables.TabIndex = 10;
             this.cmbTables.Leave += new System.EventHandler(this.cmbTables_Leave);
             // 
@@ -110,13 +110,13 @@
             this.chColumns.FormattingEnabled = true;
             this.chColumns.Location = new System.Drawing.Point(79, 91);
             this.chColumns.Name = "chColumns";
-            this.chColumns.Size = new System.Drawing.Size(485, 199);
+            this.chColumns.Size = new System.Drawing.Size(750, 154);
             this.chColumns.TabIndex = 13;
             // 
             // btnGenerateContent
             // 
             this.btnGenerateContent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerateContent.Location = new System.Drawing.Point(440, 477);
+            this.btnGenerateContent.Location = new System.Drawing.Point(705, 546);
             this.btnGenerateContent.Name = "btnGenerateContent";
             this.btnGenerateContent.Size = new System.Drawing.Size(124, 23);
             this.btnGenerateContent.TabIndex = 14;
@@ -127,7 +127,7 @@
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.Location = new System.Drawing.Point(20, 360);
+            this.label4.Location = new System.Drawing.Point(20, 432);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 39);
             this.label4.TabIndex = 15;
@@ -135,18 +135,19 @@
             // 
             // tbOutput
             // 
-            this.tbOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbOutput.Location = new System.Drawing.Point(79, 341);
+            this.tbOutput.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbOutput.Location = new System.Drawing.Point(79, 429);
             this.tbOutput.Name = "tbOutput";
-            this.tbOutput.Size = new System.Drawing.Size(485, 124);
+            this.tbOutput.Size = new System.Drawing.Size(750, 111);
             this.tbOutput.TabIndex = 16;
-            this.tbOutput.Text = "{0}";
+            this.tbOutput.Text = "Use double curly braces instead one, and keep the single for the place holders\n{{" +
+    "\n \"id\": \"{0}\"\n}},";
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(18, 302);
+            this.label5.Location = new System.Drawing.Point(18, 254);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 39);
             this.label5.TabIndex = 17;
@@ -154,19 +155,22 @@
             // 
             // tbCustomeQuery
             // 
-            this.tbCustomeQuery.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbCustomeQuery.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbCustomeQuery.Location = new System.Drawing.Point(79, 307);
+            this.tbCustomeQuery.Font = new System.Drawing.Font("Comic Sans MS", 11.25F);
+            this.tbCustomeQuery.Location = new System.Drawing.Point(79, 251);
             this.tbCustomeQuery.Name = "tbCustomeQuery";
-            this.tbCustomeQuery.Size = new System.Drawing.Size(485, 20);
-            this.tbCustomeQuery.TabIndex = 18;
+            this.tbCustomeQuery.Size = new System.Drawing.Size(750, 170);
+            this.tbCustomeQuery.TabIndex = 19;
+            this.tbCustomeQuery.Text = "";
             this.tbCustomeQuery.TextChanged += new System.EventHandler(this.tbCustomeQuery_TextChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(576, 512);
+            this.ClientSize = new System.Drawing.Size(841, 581);
             this.Controls.Add(this.tbCustomeQuery);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tbOutput);
@@ -201,7 +205,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RichTextBox tbOutput;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tbCustomeQuery;
+        private System.Windows.Forms.RichTextBox tbCustomeQuery;
     }
 }
 
