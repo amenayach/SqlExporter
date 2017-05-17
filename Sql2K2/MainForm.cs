@@ -79,7 +79,7 @@ namespace Sql2K2
                         stringBuilder.Append(
                             string.Format(
                                 template.Replace(@"\n", "\n") + "\n",
-                                args: data.Columns.Cast<DataColumn>().Select(column => row[column].ToSql()).ToArray()));
+                                args: data.Columns.Cast<DataColumn>().Select(column => row[column].ToSql(chUseSqlStringNotation.Checked)).ToArray()));
                     }
 
                     var filename = Path.Combine(Application.StartupPath, "content" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".txt");

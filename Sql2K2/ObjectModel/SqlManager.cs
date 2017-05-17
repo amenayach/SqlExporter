@@ -145,7 +145,7 @@ namespace Sql2K2.ObjectModel
         /// <summary>
         /// Normalize SQL value to the equivalant string representation
         /// </summary>
-        public static string ToSql(this object sqlValue)
+        public static string ToSql(this object sqlValue, bool useSqlStringNotation)
         {
 
             if (sqlValue == null || DBNull.Value.Equals(sqlValue))
@@ -154,11 +154,11 @@ namespace Sql2K2.ObjectModel
             }
             else if (sqlValue is DateTime?)
             {
-                return "N'" + ((DateTime)sqlValue).ToString("yyyy-MM-dd HH:mm:ss") + "'";
+                return AddSqlStringNotation(((DateTime)sqlValue).ToString("yyyy-MM-dd HH:mm:ss"), useSqlStringNotation);
             }
             else if (sqlValue is DateTime)
             {
-                return "N'" + ((DateTime)sqlValue).ToString("yyyy-MM-dd HH:mm:ss") + "'";
+                return AddSqlStringNotation(((DateTime)sqlValue).ToString("yyyy-MM-dd HH:mm:ss"), useSqlStringNotation);
             }
             else if (sqlValue is bool)
             {
@@ -166,7 +166,24 @@ namespace Sql2K2.ObjectModel
             }
             else
             {
-                return "N'" + sqlValue + "'";
+                return AddSqlStringNotation(sqlValue.ToString(), useSqlStringNotation);
+            }
+
+        }
+
+        /// <summary>
+        /// Adds N'' for string if "use sql string notation" is true
+        /// </summary>
+        private static string AddSqlStringNotation(string value, bool useSqlStringNotation)
+        {
+
+            if (string.IsNullOrEmpty(value))
+            {
+                return string.Empty;
+            }
+            else
+            {
+                return (useSqlStringNotation ? "N'" : "") + value + (useSqlStringNotation ? "'" : "");
             }
 
         }

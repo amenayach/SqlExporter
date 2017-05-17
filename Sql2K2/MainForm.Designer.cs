@@ -40,6 +40,7 @@
             this.tbOutput = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tbCustomeQuery = new System.Windows.Forms.RichTextBox();
+            this.chUseSqlStringNotation = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnConnect
@@ -166,11 +167,23 @@
             this.tbCustomeQuery.Text = "";
             this.tbCustomeQuery.TextChanged += new System.EventHandler(this.tbCustomeQuery_TextChanged);
             // 
+            // chUseSqlStringNotation
+            // 
+            this.chUseSqlStringNotation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.chUseSqlStringNotation.AutoSize = true;
+            this.chUseSqlStringNotation.Location = new System.Drawing.Point(514, 550);
+            this.chUseSqlStringNotation.Name = "chUseSqlStringNotation";
+            this.chUseSqlStringNotation.Size = new System.Drawing.Size(185, 17);
+            this.chUseSqlStringNotation.TabIndex = 20;
+            this.chUseSqlStringNotation.Text = "&Use Sql string notation ( N\'value\' )";
+            this.chUseSqlStringNotation.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(841, 581);
+            this.Controls.Add(this.chUseSqlStringNotation);
             this.Controls.Add(this.tbCustomeQuery);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tbOutput);
@@ -206,6 +219,7 @@
         private System.Windows.Forms.RichTextBox tbOutput;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RichTextBox tbCustomeQuery;
+        private System.Windows.Forms.CheckBox chUseSqlStringNotation;
     }
 }
 
